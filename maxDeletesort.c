@@ -1,69 +1,58 @@
 /*
  * AUTHOR : SHADOWW
+ * LAST MODIFIED : 2 / 07 / 2022
  */
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <ctype.h>
-#define MAX 20 // Change the value of MAX
+#define MAX 60
 
-int n, beforesort[MAX], aftersort[MAX], temp, i, l, x, j;
-char condition = 'y';
+int n, i, l, j, x, temp, tempElement, indexNumber, elementList[MAX];
 
 int main()
 {
   printf("--------------------\n");
   printf("|  MAX DELETE SORT |\n");
   printf("--------------------\n");
-  while (tolower(condition) == 'y')
+  printf("\nENTER THE NUMBER OF ELEMENTS: ");
+  scanf("%d", &n);
+  printf("\nENTER THE ELEMENTS: ");
+  for (i = 0; i < n; i++)
+    scanf("%d", &elementList[i]);
+  l = n - 1;
+  indexNumber = n;
+
+  for (j = 0; j < n; j++)
   {
-    printf("\nENTER THE NUMBER OF ELEMENTS: ");
-    scanf("%d", &n);
-    printf("\nENTER THE ELEMENTS: ");
-    for (i = 0; i < n; i++)
-      scanf("%d", &beforesort[i]);
-    l = n - 1;
-
-    for (j = 0; j < n; j++)
+    temp = elementList[0];
+    x = 0;
+    for (i = 1; i < indexNumber; i++)
     {
-      temp = beforesort[0];
-      x = 0;
-      for (i = 1; i < n; i++)
+      if (temp < elementList[i])
       {
-        if (temp < beforesort[i])
-        {
-          temp = beforesort[i];
-          x = i;
-        }
-      }
-      if (x == 0)
-      {
-        aftersort[l] = temp;
-        beforesort[0] = 0;
-        l -= 1;
-      }
-      else
-      {
-        aftersort[l] = temp;
-        beforesort[x] = 0;
-        l -= 1;
+        temp = elementList[i];
+        x = i;
       }
     }
-
-    printf("\nELEMENTS SORTED SUCCESSFULLY: ");
-    for (i = 0; i < n; i++)
-      printf("%d ", aftersort[i]);
-    printf("\n\nRUN AGAIN?(Y/N) : ");
-    scanf("%s", &condition);
-    if (tolower(condition) == 'y')
+    if (x == 0)
     {
-      for (j = 0; j < n; j++)
-      {
-        beforesort[j] = 0;
-        aftersort[j] = 0;
-      }
+      tempElement = elementList[l];
+      elementList[l] = elementList[0];
+      elementList[0] = tempElement;
+      l -= 1;
     }
+    else
+    {
+      tempElement = elementList[l];
+      elementList[l] = elementList[x];
+      elementList[x] = tempElement;
+      l -= 1;
+    }
+    indexNumber -= 1;
   }
+
+  printf("\nELEMENTS SORTED SUCCESSFULLY: ");
+  for (i = 0; i < n; i++)
+    printf("%d ", elementList[i]);
+  printf("\n");
   return 0;
 }
