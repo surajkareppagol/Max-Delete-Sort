@@ -1,16 +1,19 @@
-# MaxDeleteSort
+# MaxDelete Sort
 
-MaxDeleteSort is an sorting algorithm written in c it sorts the elements(here numbers) based on there value.  
-This process continued until the sorting is done and you get sorted numbers as output.
+This is the `insertion sort` but in reverse, created in **c** language.
 
-## HOW IT WORKS ?
+---
 
-It first finds the max number and swaps it with n-1 th element in the same array and variable pointing to last element is decremented.This process continued until the sorting is done.For more info check the output images.
+## How it works?
 
-### OUTPUT
+It first finds the largest number in the array and then swaps it with the last number in the array, and this process is repeated until each number gets sorted.
 
-![output 1](outputImages/output1.png)
+![maxDeleteSort_1](images/maxDeleteSort_1.png)
 
-![output 2](outputImages/output2.png)
+![maxDeleteSort_2](images/maxDeleteSort_2.png)
 
-![output](outputImages/output.png)
+---
+
+## Output
+
+![maxDeleteSort](images/maxDeleteSort.png)

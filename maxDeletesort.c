@@ -1,47 +1,41 @@
 /*
  * AUTHOR : SHADOWW
- * LAST MODIFIED : 5 / 07 / 2022
+ * LAST MODIFIED : 17 / 11 / 2022
  */
 
 #include <stdio.h>
 #define MAX 60
 
-int n, i, l, j, x, tempElement, indexNumber, elementList[MAX];
+int numberOfElements, i, j, l, positionOfElement, tempElement, elementList[MAX];
 
 int main()
 {
   printf("--------------------\n");
   printf("|  MAX DELETE SORT |\n");
   printf("--------------------\n");
-  printf("\nENTER THE NUMBER OF ELEMENTS: ");
-  scanf("%d", &n);
-  printf("\nENTER THE ELEMENTS: ");
-  for (i = 0; i < n; i++)
+  printf("How many numbers 🔢 do you wanna sort ? : ");
+  scanf("%d", &numberOfElements);
+  printf("Ok, got it now please enter the numbers 👇,\n> ");
+  for (i = 0; i < numberOfElements; i++)
     scanf("%d", &elementList[i]);
-  l = n - 1;
-  indexNumber = n;
-
-  for (j = 0; j < n; j++)
+  l = numberOfElements - 1;
+  for (j = 0; j < numberOfElements; j++)
   {
     tempElement = elementList[0];
-    x = 0;
-    for (i = 1; i < indexNumber; i++)
-    {
+    positionOfElement = 0;
+    for (i = 1; i < l + 1; i++)
       if (tempElement < elementList[i])
       {
         tempElement = elementList[i];
-        x = i;
+        positionOfElement = i;
       }
-    }
     tempElement = elementList[l];
-    elementList[l] = elementList[x];
-    elementList[x] = tempElement; // SWAP THE ELEMENTS
+    elementList[l] = elementList[positionOfElement];
+    elementList[positionOfElement] = tempElement;
     l -= 1;
-    indexNumber -= 1;
   }
-
-  printf("\nELEMENTS SORTED SUCCESSFULLY: ");
-  for (i = 0; i < n; i++)
+  printf("\nHere are the sorted numbers 👇,\n> ");
+  for (i = 0; i < numberOfElements; i++)
     printf("%d ", elementList[i]);
   printf("\n");
   return 0;
